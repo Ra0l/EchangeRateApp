@@ -15,13 +15,16 @@ struct ExchangeRateView: View {
     
     var body: some View {
         
+        Text("APP EXCHANGE")
+            .font(.title)
+            .fontWeight(.bold)
         VStack(spacing: 10) {
             
             VStack {
                 HStack {
                     Image("exchange")
                         
-                    Text("Cambía tus dólares y soles al toque.")
+                    Text(viewModel.isDolarToSoles ? "Cambía tus dólares y soles al toque." : "Cambía tus soles y dólares al toque.")
                         .font(.title)
                         .fontWeight(.bold)
                 }
@@ -38,15 +41,17 @@ struct ExchangeRateView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("Tienes \(viewModel.isDolarToSoles ? "Dolares" : "Soles")")
+                Text("Tienes")
                     .font(.headline)
-                TextField("Dólares", text: $viewModel.amount)
+                TextField(viewModel.isDolarToSoles ? "Dólares" : "Soles", text: $viewModel.amount)
                     .customTextField()
             }
             
             VStack(alignment: .leading) {
                 Button {
                     viewModel.isDolarToSoles.toggle()
+                    viewModel.fetchCurrencies()
+                    viewModel.amount = viewModel.result
                 } label: {
                     Image(systemName: "arrow.up.arrow.down")
                         .font(.system(size: 50))

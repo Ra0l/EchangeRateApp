@@ -10,7 +10,7 @@ import Combine
 
 class CurrencyConverterViewModel: ObservableObject {
     
-    var isDolarToSoles: Bool = true
+    @Published var isDolarToSoles: Bool = true
     @Published var amount: String = ""
     @Published var baseCurrency: String = "USD"
     @Published var targetCurrency: String = "PEN"
@@ -18,7 +18,7 @@ class CurrencyConverterViewModel: ObservableObject {
     
     var result: String {
         guard let exchangeRates = exchangeRates,
-              let rate = exchangeRates.rates[targetCurrency],
+              let rate = exchangeRates.rates[isDolarToSoles ? targetCurrency : "USD"],
               let amount = Double(amount) else {
             return "Ingrese un valor para realizar la conversión"
         }
@@ -30,7 +30,7 @@ class CurrencyConverterViewModel: ObservableObject {
     private var service = ExchangeRateService()
 
     func fetchCurrencies() {
-        service.fetchExchangeRates(for: baseCurrency) { [weak self] exchangeRate in
+        service.fetchExchangeRates(for: isDolarToSoles ? baseCurrency : "PEN") { [weak self] exchangeRate in
             DispatchQueue.main.async {
                 self?.exchangeRates = exchangeRate
                 self?.currencies = exchangeRate?.rates.keys.sorted() ?? []
