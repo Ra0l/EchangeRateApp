@@ -15,6 +15,7 @@
 		F7687DB72C0A861C00A89806 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DB62C0A861C00A89806 /* CurrencyConverterViewModel.swift */; };
 		F7687DB92C0A884C00A89806 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DB82C0A884C00A89806 /* CustomTextField.swift */; };
 		F7687DBB2C0A894D00A89806 /* ExchangeRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DBA2C0A894D00A89806 /* ExchangeRateView.swift */; };
+		F7687DC02C0D2B5300A89806 /* ExchangeRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DBF2C0D2B5300A89806 /* ExchangeRateService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		F7687DB62C0A861C00A89806 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		F7687DB82C0A884C00A89806 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F7687DBA2C0A894D00A89806 /* ExchangeRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateView.swift; sourceTree = "<group>"; };
+		F7687DBF2C0D2B5300A89806 /* ExchangeRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,13 +61,15 @@
 		F7687DA22C0A562A00A89806 /* AppExchange */ = {
 			isa = PBXGroup;
 			children = (
+				F7687DBE2C0D2B4300A89806 /* Service */,
+				F7687DB82C0A884C00A89806 /* CustomTextField.swift */,
+				F7687DA52C0A562A00A89806 /* ContentView.swift */,
 				F7687DB32C0A848400A89806 /* ViewModel */,
 				F7687DB22C0A847C00A89806 /* View */,
 				F7687DB12C0A844C00A89806 /* Model */,
 				F7687DA32C0A562A00A89806 /* AppExchangeApp.swift */,
 				F7687DA72C0A562E00A89806 /* Assets.xcassets */,
 				F7687DA92C0A562E00A89806 /* Preview Content */,
-				F7687DB82C0A884C00A89806 /* CustomTextField.swift */,
 			);
 			path = AppExchange;
 			sourceTree = "<group>";
@@ -89,7 +93,6 @@
 		F7687DB22C0A847C00A89806 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F7687DA52C0A562A00A89806 /* ContentView.swift */,
 				F7687DBA2C0A894D00A89806 /* ExchangeRateView.swift */,
 			);
 			path = View;
@@ -101,6 +104,14 @@
 				F7687DB62C0A861C00A89806 /* CurrencyConverterViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F7687DBE2C0D2B4300A89806 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F7687DBF2C0D2B5300A89806 /* ExchangeRateService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 			files = (
 				F7687DB72C0A861C00A89806 /* CurrencyConverterViewModel.swift in Sources */,
 				F7687DB52C0A84DC00A89806 /* Rate.swift in Sources */,
+				F7687DC02C0D2B5300A89806 /* ExchangeRateService.swift in Sources */,
 				F7687DA62C0A562A00A89806 /* ContentView.swift in Sources */,
 				F7687DBB2C0A894D00A89806 /* ExchangeRateView.swift in Sources */,
 				F7687DA42C0A562A00A89806 /* AppExchangeApp.swift in Sources */,

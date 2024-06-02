@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExchangeRateView: View {
     
+    @ObservedObject var viewModel = CurrencyConverterViewModel()
     @State var have = ""
     @State var receive = ""
     
@@ -37,15 +38,15 @@ struct ExchangeRateView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("Tienes")
+                Text("Tienes \(viewModel.isDolarToSoles ? "Dolares" : "Soles")")
                     .font(.headline)
-                TextField("Cantidad", text: $have)
+                TextField("Dólares", text: $viewModel.amount)
                     .customTextField()
             }
             
             VStack(alignment: .leading) {
                 Button {
-                    
+                    viewModel.isDolarToSoles.toggle()
                 } label: {
                     Image(systemName: "arrow.up.arrow.down")
                         .font(.system(size: 50))
@@ -57,11 +58,14 @@ struct ExchangeRateView: View {
             VStack(alignment: .leading) {
                 Text("Recibes")
                     .font(.headline)
-                TextField("", text: $receive)
+                TextField(viewModel.result, text: $receive)
                     .customTextField()
             }
         }
         .padding()
+        .onAppear {
+            viewModel.fetchCurrencies()
+        }
     }
 }
 
