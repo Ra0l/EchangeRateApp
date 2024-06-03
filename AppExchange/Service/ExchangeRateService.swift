@@ -19,12 +19,19 @@ class ExchangeRateService: ExchangeRateServiceProtocol {
     func fetchExchangeRates(for baseCurrency: String, completion: @escaping (ExchangeRate?) -> Void) {
         let url = URL(string: "\(baseURL)\(baseCurrency)")!
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(nil)
-                return
+            if let data = data {
+                do {
+                    let exchangeRate = try JSONDecoder().decode(ExchangeRate.self, from: data)
+                    completion(exchangeRate)
+                    for exchange in exchangeRate.rates {
+                        print("[\(exchange.key) : \(exchange.value)]")
+                    }
+                }
+                catch let error {
+                    completion(nil)
+                    print(error.localizedDescription)
+                }
             }
-            let exchangeRate = try? JSONDecoder().decode(ExchangeRate.self, from: data)
-            completion(exchangeRate)
         }.resume()
     }
 }
