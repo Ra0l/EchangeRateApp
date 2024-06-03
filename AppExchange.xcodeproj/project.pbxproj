@@ -18,6 +18,7 @@
 		F7687DC52C0D3C3300A89806 /* rates.json in Resources */ = {isa = PBXBuildFile; fileRef = F7687DC42C0D3C3300A89806 /* rates.json */; };
 		F7687DCD2C0D3C9400A89806 /* AppExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DCC2C0D3C9400A89806 /* AppExchangeTests.swift */; };
 		F7687DD82C0D60FC00A89806 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DD72C0D60FC00A89806 /* SplashScreenView.swift */; };
+		F7687DDD2C0D671400A89806 /* CurrencyExchangeViewModelSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DDC2C0D671400A89806 /* CurrencyExchangeViewModelSnapshotTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		F7687DCA2C0D3C9400A89806 /* AppExchangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppExchangeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7687DCC2C0D3C9400A89806 /* AppExchangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExchangeTests.swift; sourceTree = "<group>"; };
 		F7687DD72C0D60FC00A89806 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		F7687DDC2C0D671400A89806 /* CurrencyExchangeViewModelSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeViewModelSnapshotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +152,9 @@
 		F7687DCB2C0D3C9400A89806 /* AppExchangeTests */ = {
 			isa = PBXGroup;
 			children = (
+				F7687DDB2C0D665500A89806 /* SnapshotTests */,
+				F7687DDA2C0D664700A89806 /* UnitTests */,
 				F7687DD32C0D400D00A89806 /* MockService */,
-				F7687DCC2C0D3C9400A89806 /* AppExchangeTests.swift */,
 			);
 			path = AppExchangeTests;
 			sourceTree = "<group>";
@@ -169,6 +172,22 @@
 				F7687DD72C0D60FC00A89806 /* SplashScreenView.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		F7687DDA2C0D664700A89806 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				F7687DCC2C0D3C9400A89806 /* AppExchangeTests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		F7687DDB2C0D665500A89806 /* SnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				F7687DDC2C0D671400A89806 /* CurrencyExchangeViewModelSnapshotTests.swift */,
+			);
+			path = SnapshotTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +256,9 @@
 				Base,
 			);
 			mainGroup = F7687D972C0A562A00A89806;
+			packageReferences = (
+				F7687DD92C0D662700A89806 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = F7687DA12C0A562A00A89806 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7687DDD2C0D671400A89806 /* CurrencyExchangeViewModelSnapshotTests.swift in Sources */,
 				F7687DCD2C0D3C9400A89806 /* AppExchangeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,6 +568,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F7687DD92C0D662700A89806 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = F7687D982C0A562A00A89806 /* Project object */;
 }
