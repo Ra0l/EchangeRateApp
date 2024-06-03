@@ -27,7 +27,7 @@ class CurrencyConverterViewModel: ObservableObject {
         return String(format: "%.5f", convertedAmount)
     }
 
-    private var exchangeRates: ExchangeRate?
+    var exchangeRates: ExchangeRate?
     private var service: ExchangeRateServiceProtocol
     
     init(service: ExchangeRateServiceProtocol) {
