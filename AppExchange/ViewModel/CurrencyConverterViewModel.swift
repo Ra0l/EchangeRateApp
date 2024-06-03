@@ -19,7 +19,7 @@ class CurrencyConverterViewModel: ObservableObject {
     
     var result: String {
         guard let exchangeRates = exchangeRates,
-              let rate = exchangeRates.rates[isDolarToSoles ? targetCurrency : "USD"],
+              let rate = exchangeRates.rates[isDolarToSoles ? targetCurrency : baseCurrency],
               let amount = Double(amount) else {
             return "Ingrese un valor para realizar la conversión"
         }
@@ -35,7 +35,7 @@ class CurrencyConverterViewModel: ObservableObject {
     }
 
     func fetchCurrencies() {
-        service.fetchExchangeRates(for: isDolarToSoles ? baseCurrency : "PEN") { [weak self] exchangeRate in
+        service.fetchExchangeRates(for: isDolarToSoles ? baseCurrency : targetCurrency) { [weak self] exchangeRate in
             DispatchQueue.main.async {
                 self?.exchangeRates = exchangeRate
                 self?.currencies = exchangeRate?.rates.keys.sorted() ?? []

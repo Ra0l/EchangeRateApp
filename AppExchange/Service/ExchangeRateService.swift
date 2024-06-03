@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ExchangeRateServiceProtocol {
     func fetchExchangeRates(for baseCurrency: String, completion: @escaping (ExchangeRate?) -> Void)
 }
 
 class ExchangeRateService: ExchangeRateServiceProtocol {
-    private let apiKey = "bdfa83b1fd5f4fb3bb8373e1db9e6631"
+    /** https://www.exchangerate-api.com/docs/free  */
     private let baseURL = "https://api.exchangerate-api.com/v4/latest/"
 
     func fetchExchangeRates(for baseCurrency: String, completion: @escaping (ExchangeRate?) -> Void) {
