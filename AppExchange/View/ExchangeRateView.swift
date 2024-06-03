@@ -18,13 +18,13 @@ struct ExchangeRateView: View {
         Text("APP EXCHANGE")
             .font(.title)
             .fontWeight(.bold)
-        VStack(spacing: 10) {
+        VStack(spacing: 30) {
             
-            VStack {
+            VStack(spacing: 30) {
                 HStack {
                     Image("exchange")
                         
-                    Text(viewModel.isDolarToSoles ? "Cambía tus dólares y soles al toque." : "Cambía tus soles y dólares al toque.")
+                    Text("Cambía tus \(viewModel.isDolarToSoles ? "dólares" : "soles") y \(viewModel.isDolarToSoles ? "soles" : "dólares") al toque.")
                         .font(.title)
                         .fontWeight(.bold)
                 }
@@ -41,7 +41,7 @@ struct ExchangeRateView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("Tienes")
+                Text("Tienes \(viewModel.isDolarToSoles ? "en dólares" : "en soles")")
                     .font(.headline)
                 TextField(viewModel.isDolarToSoles ? "Dólares" : "Soles", text: $viewModel.amount)
                     .customTextField()
@@ -51,7 +51,7 @@ struct ExchangeRateView: View {
                 Button {
                     viewModel.isDolarToSoles.toggle()
                     viewModel.fetchCurrencies()
-                    viewModel.amount = viewModel.result
+//                    viewModel.amount = viewModel.result
                 } label: {
                     Image(systemName: "arrow.up.arrow.down")
                         .font(.system(size: 50))
@@ -61,7 +61,7 @@ struct ExchangeRateView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("Recibes")
+                Text("Recibes \(viewModel.isDolarToSoles ? "en soles" : "en dólares")")
                     .font(.headline)
                 TextField(viewModel.result, text: $receive)
                     .customTextField()
