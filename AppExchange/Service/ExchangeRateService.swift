@@ -7,7 +7,11 @@
 
 import Foundation
 
-class ExchangeRateService {
+protocol ExchangeRateServiceProtocol {
+    func fetchExchangeRates(for baseCurrency: String, completion: @escaping (ExchangeRate?) -> Void)
+}
+
+class ExchangeRateService: ExchangeRateServiceProtocol {
     private let apiKey = "bdfa83b1fd5f4fb3bb8373e1db9e6631"
     private let baseURL = "https://api.exchangerate-api.com/v4/latest/"
 
@@ -21,5 +25,13 @@ class ExchangeRateService {
             let exchangeRate = try? JSONDecoder().decode(ExchangeRate.self, from: data)
             completion(exchangeRate)
         }.resume()
+    }
+}
+
+class MockExchangeRateService: ExchangeRateServiceProtocol {
+    var mockExchangeRate: ExchangeRate?
+    
+    func fetchExchangeRates(for baseCurrency: String, completion: @escaping (ExchangeRate?) -> Void) {
+        completion(mockExchangeRate)
     }
 }

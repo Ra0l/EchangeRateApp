@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+
 class CurrencyConverterViewModel: ObservableObject {
     
     @Published var isDolarToSoles: Bool = true
@@ -27,7 +28,11 @@ class CurrencyConverterViewModel: ObservableObject {
     }
 
     private var exchangeRates: ExchangeRate?
-    private var service = ExchangeRateService()
+    private var service: ExchangeRateServiceProtocol
+    
+    init(service: ExchangeRateServiceProtocol) {
+        self.service = service
+    }
 
     func fetchCurrencies() {
         service.fetchExchangeRates(for: isDolarToSoles ? baseCurrency : "PEN") { [weak self] exchangeRate in

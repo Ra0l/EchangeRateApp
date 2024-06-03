@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExchangeRateView: View {
     
-    @ObservedObject var viewModel = CurrencyConverterViewModel()
+    @ObservedObject var viewModel = CurrencyConverterViewModel(service: ExchangeRateService())
     @State var have = ""
     @State var receive = ""
     
