@@ -17,6 +17,7 @@
 		F7687DC02C0D2B5300A89806 /* ExchangeRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DBF2C0D2B5300A89806 /* ExchangeRateService.swift */; };
 		F7687DC52C0D3C3300A89806 /* rates.json in Resources */ = {isa = PBXBuildFile; fileRef = F7687DC42C0D3C3300A89806 /* rates.json */; };
 		F7687DCD2C0D3C9400A89806 /* AppExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DCC2C0D3C9400A89806 /* AppExchangeTests.swift */; };
+		F7687DD82C0D60FC00A89806 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7687DD72C0D60FC00A89806 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		F7687DC42C0D3C3300A89806 /* rates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = rates.json; sourceTree = "<group>"; };
 		F7687DCA2C0D3C9400A89806 /* AppExchangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppExchangeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7687DCC2C0D3C9400A89806 /* AppExchangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExchangeTests.swift; sourceTree = "<group>"; };
+		F7687DD72C0D60FC00A89806 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		F7687DA22C0A562A00A89806 /* AppExchange */ = {
 			isa = PBXGroup;
 			children = (
+				F7687DD62C0D60EB00A89806 /* Splash */,
 				F7687DC32C0D3C1500A89806 /* Mock */,
 				F7687DB82C0A884C00A89806 /* CustomTextField.swift */,
 				F7687DBE2C0D2B4300A89806 /* Service */,
@@ -158,6 +161,14 @@
 			children = (
 			);
 			path = MockService;
+			sourceTree = "<group>";
+		};
+		F7687DD62C0D60EB00A89806 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				F7687DD72C0D60FC00A89806 /* SplashScreenView.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7687DD82C0D60FC00A89806 /* SplashScreenView.swift in Sources */,
 				F7687DB72C0A861C00A89806 /* CurrencyConverterViewModel.swift in Sources */,
 				F7687DB52C0A84DC00A89806 /* Rate.swift in Sources */,
 				F7687DC02C0D2B5300A89806 /* ExchangeRateService.swift in Sources */,
