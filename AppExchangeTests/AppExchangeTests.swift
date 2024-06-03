@@ -26,7 +26,7 @@ class CurrencyExchangeViewModelTests: XCTestCase {
     
     func testFetchCurrencies() {
         // Given
-        let mockExchangeRate = ExchangeRate(base: "USD", rates: ["PEN": 3.72, "USD": 0.85])
+        let mockExchangeRate = ExchangeRate(base: "USD", rates: ["PEN": 3.72, "EUR": 0.85])
         mockService.mockExchangeRate = mockExchangeRate
         
         // When
@@ -42,7 +42,7 @@ class CurrencyExchangeViewModelTests: XCTestCase {
             XCTAssertNil(error, "Test timed out")
             XCTAssertEqual(self.viewModel.exchangeRates?.base, "USD")
             XCTAssertEqual(self.viewModel.exchangeRates?.rates["PEN"], 3.72)
-            XCTAssertEqual(self.viewModel.currencies, ["USD", "PEN"])
+            XCTAssertEqual(self.viewModel.currencies, ["EUR", "PEN"])
         }
     }
 }
