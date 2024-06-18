@@ -43,6 +43,7 @@ class CurrencyExchangeViewModelTests: XCTestCase {
             XCTAssertEqual(self.viewModel.exchangeRates?.base, "USD")
             XCTAssertEqual(self.viewModel.exchangeRates?.rates["PEN"], 3.72)
             XCTAssertEqual(self.viewModel.currencies, ["EUR", "PEN"])
+            
         }
     }
 }
