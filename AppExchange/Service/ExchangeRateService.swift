@@ -22,6 +22,7 @@ class ExchangeRateService: ExchangeRateServiceProtocol {
             if let data = data {
                 do {
                     let exchangeRate = try JSONDecoder().decode(ExchangeRate.self, from: data)
+                    print(exchangeRate)
                     completion(exchangeRate)
                     for exchange in exchangeRate.rates {
                         print("[\(exchange.key) : \(exchange.value)]")

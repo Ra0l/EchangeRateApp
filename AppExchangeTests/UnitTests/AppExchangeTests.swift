@@ -26,7 +26,7 @@ class CurrencyExchangeViewModelTests: XCTestCase {
     
     func testFetchCurrencies() {
         // Given
-        let mockExchangeRate = ExchangeRate(provider: "lsls", terms: "lslsl", date: "2024-03-03", timeLastUpdated: 1200202, base: "USD", rates: ["PEN": 3.72, "EUR": 0.85])
+        let mockExchangeRate = ExchangeRate(provider: "lsls", warning: "", terms: "lslsl", date: "2024-03-03", timeLastUpdated: 1200202, base: "USD", rates: ["PEN": 3.72, "EUR": 0.85])
         mockService.mockExchangeRate = mockExchangeRate
         
         // When
