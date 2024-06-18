@@ -46,4 +46,34 @@ class CurrencyExchangeViewModelTests: XCTestCase {
             
         }
     }
+    
+    func testValidConversion() {
+        // Configurar valores de prueba
+        viewModel.exchangeRates = ExchangeRate(provider: "lsls", warning: "", terms: "lslsl", date: "2024-03-03", timeLastUpdated: 1200202, base: "USD", rates: ["USD": 3.5]) // Ejemplo de tasa de cambio
+        viewModel.isDolarToSoles = true
+        viewModel.targetCurrency = "USD"
+        viewModel.baseCurrency = "PEN"
+        viewModel.amount = "10" // 10 soles
+        
+        // Calcular el resultado
+        let result = viewModel.result
+        
+        // Comprobar que el resultado es correcto
+        XCTAssertEqual(result, "35.00000", "La conversión de 10 PEN a USD con una tasa de 3.5 debería ser 35.00000")
+    }
+    
+    func testNilExchangeRates() {
+        // Configurar valores de prueba
+        viewModel.exchangeRates = nil
+        viewModel.isDolarToSoles = true
+        viewModel.targetCurrency = "USD"
+        viewModel.baseCurrency = "PEN"
+        viewModel.amount = "10"
+        
+        // Calcular el resultado
+        let result = viewModel.result
+        
+        // Comprobar que el resultado es correcto
+        XCTAssertEqual(result, "Ingrese un valor para realizar la conversión", "El resultado debe ser un mensaje de error si exchangeRates es nil")
+    }
 }
