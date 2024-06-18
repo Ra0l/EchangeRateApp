@@ -9,6 +9,7 @@ import Foundation
 
 struct ExchangeRate: Decodable {
     let provider: String
+    let warning: String
     let terms: String
     let date: String
     let timeLastUpdated: Int
@@ -17,6 +18,7 @@ struct ExchangeRate: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case provider
+        case warning = "WARNING_UPGRADE_TO_V6"
         case terms
         case date
         case timeLastUpdated = "time_last_updated"
