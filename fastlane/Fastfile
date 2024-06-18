@@ -12,9 +12,9 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
+opt_out_usage
 
 default_platform(:ios)
-opt_out_usage
 
 platform :ios do
   desc "Execute unit tests"
