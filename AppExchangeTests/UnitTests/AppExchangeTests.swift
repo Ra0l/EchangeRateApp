@@ -76,4 +76,62 @@ class CurrencyExchangeViewModelTests: XCTestCase {
         // Comprobar que el resultado es correcto
         XCTAssertEqual(result, "Ingrese un valor para realizar la conversión", "El resultado debe ser un mensaje de error si exchangeRates es nil")
     }
+    
+    func testFetchExchangeRates_Success() {
+        // Datos JSON de prueba
+        let jsonData = """
+            {
+                "base": "USD",
+                "rates": {
+                    "EUR": 0.935,
+                    "GBP": 0.791
+                }
+            }
+            """.data(using: .utf8)
+        
+        // Simular URLSession
+        let mockSession = MockURLSession()
+        mockSession.data = jsonData
+        
+        let expectation = self.expectation(description: "Completion handler called")
+        
+        let service = ExchangeRateService()
+        service.fetchExchangeRates(for: "USD") { exchangeRate in
+            XCTAssertNotNil(exchangeRate)
+            XCTAssertEqual(exchangeRate?.base, "USD")
+            XCTAssertEqual(exchangeRate?.rates["EUR"], 0.935)
+            XCTAssertEqual(exchangeRate?.rates["GBP"], 0.791)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+}
+
+class MockURLSession: URLSession {
+    var data: Data?
+    var urlResponse: URLResponse?
+    var error: Error?
+    
+    override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        let data = self.data
+        let response = self.urlResponse
+        let error = self.error
+        
+        return MockURLSessionDataTask {
+            completionHandler(data, response, error)
+        }
+    }
+}
+
+class MockURLSessionDataTask: URLSessionDataTask {
+    private let closure: () -> Void
+    
+    init(closure: @escaping () -> Void) {
+        self.closure = closure
+    }
+    
+    override func resume() {
+        closure()
+    }
 }
